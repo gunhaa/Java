@@ -1,6 +1,7 @@
 package iteration;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Iteration {
@@ -9,7 +10,7 @@ public class Iteration {
 
         List<Integer> list = new ArrayList<>();
 
-        for (int i = 1; i < 3; i++) {
+        for (int i = 1; i < 4; i++) {
             list.add(i);
         }
         try {
@@ -24,6 +25,12 @@ public class Iteration {
 
         System.out.println("언와인드 되고 계속 진행됬음");
 
+        Iterator<Integer> iterator = list.iterator();
+        while(iterator.hasNext()) {
+            // iterator는 java가 최적화 시키지 못함
+            Integer value = iterator.next();
+            System.out.println("iterator value: " + value);
+        }
 
     }
 }
