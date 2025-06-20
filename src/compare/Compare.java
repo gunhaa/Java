@@ -1,6 +1,7 @@
 package compare;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,17 +17,23 @@ public class Compare {
         }
 
         @Override
-        public int compareTo(Phone thisPhone) {
+        public int compareTo(Phone thatPhone) {
 
             calls++;
-            String[] versionArr = thisPhone.version.split("\\.");
+            String[] anotherVer = thatPhone.version.split("v");
+            String[] thisVer = this.version.split("v");
             // java의 sort 알고리즘은 timSort 알고리즘을 사용한다
             // 이미 정렬됬다면 정렬을 추가로 하지 않는다
+            // 7번 호출
+            double dAnotherVer = Double.parseDouble(anotherVer[1]);
+            double dThisVer = Double.parseDouble(thisVer[1]);
             System.out.println("호출된 횟수: " + calls);
+            if (dThisVer > dAnotherVer) {
+                return 1;
+            }
 
-            for (String version : versionArr) {
-                int ver = Integer.parseInt(version);
-
+            if (dThisVer < dAnotherVer) {
+                return -1;
             }
 
             return 0;
@@ -43,11 +50,11 @@ public class Compare {
     }
 
     public static void main(String[] args) {
-        Phone p1 = new Phone("2.00");
-        Phone p2 = new Phone("3.01");
-        Phone p3 = new Phone("6.02");
-        Phone p4 = new Phone("2.03");
-        Phone p5 = new Phone("2.04");
+        Phone p1 = new Phone("v2.00");
+        Phone p2 = new Phone("v3.01");
+        Phone p3 = new Phone("v6.02");
+        Phone p4 = new Phone("v2.03");
+        Phone p5 = new Phone("v2.04");
         List<Phone> list = new ArrayList<>();
         list.add(p1);
         list.add(p2);
