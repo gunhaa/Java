@@ -33,12 +33,12 @@ public class Iteration {
         }
 
         Iteration iteration = new Iteration();
-        // 이런게되네
         List<Integer> list1 = new ArrayList<>();
         list1.add(1);
         list1.add(2);
         list1.add(3);
         list1.add(4);
+        // 이런게되네
         SomeIter s1 = iteration.new SomeIter(list1);
         while (s1.hasNext()) {
             int value = s1.next();
