@@ -28,15 +28,17 @@ public class Compare {
             double dAnotherVer = Double.parseDouble(anotherVer[1]);
             double dThisVer = Double.parseDouble(thisVer[1]);
             System.out.println("호출된 횟수: " + calls);
-            if (dThisVer > dAnotherVer) {
-                return 1;
-            }
-
-            if (dThisVer < dAnotherVer) {
-                return -1;
-            }
-
-            return 0;
+//            if (dThisVer > dAnotherVer) {
+//                return 1;
+//            }
+//
+//            if (dThisVer < dAnotherVer) {
+//                return -1;
+//            }
+//
+//            return 0;
+//            return Double.compare(dThisVer, dAnotherVer);
+            return Double. valueOf(dThisVer).compareTo(Double. valueOf(dAnotherVer));
         }
 
         @Override

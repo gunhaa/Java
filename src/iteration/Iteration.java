@@ -32,5 +32,36 @@ public class Iteration {
             System.out.println("iterator value: " + value);
         }
 
+        Iteration iteration = new Iteration();
+        // 이런게되네
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+        list1.add(4);
+        SomeIter s1 = iteration.new SomeIter(list1);
+        while (s1.hasNext()) {
+            int value = s1.next();
+            System.out.println("iterator implements: " + value);
+        }
+    }
+
+    private class SomeIter implements Iterator<Integer>{
+        List<Integer> list;
+        int index = 0;
+
+        public SomeIter(List<Integer> list) {
+            this.list = list;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return index < list.size();
+        }
+
+        @Override
+        public Integer next() {
+            return list.get(index++);
+        }
     }
 }
