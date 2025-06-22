@@ -40,10 +40,11 @@ public abstract class Threads {
 
     public static void workIOBoundMockThread() throws InterruptedException {
         long start = System.currentTimeMillis();
-        try (ExecutorService es = Executors.newFixedThreadPool(100)){
-            CountDownLatch latch = new CountDownLatch(1000);
+        int count = 20000;
+        try (ExecutorService es = Executors.newFixedThreadPool(count)){
+            CountDownLatch latch = new CountDownLatch(count);
 
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < count; i++) {
                 es.submit(() -> {
                     try {
                         Thread.sleep(1000);
@@ -58,7 +59,8 @@ public abstract class Threads {
             latch.await();
 
             long end = System.currentTimeMillis();
-            System.out.println("workIOBoundMockThread time: " + (end - start));
+            System.out.println("workIOBoundMockThread time: " + (end - start) + "ms");
+            System.out.println("Thread Count: " + count);
         }
     }
 }

@@ -41,10 +41,11 @@ public abstract class VirtualThreads {
 
     public static void workIOBoundMockVThread() throws InterruptedException {
         long start = System.currentTimeMillis();
+        int count = 20000;
         try (ExecutorService es = Executors.newVirtualThreadPerTaskExecutor()){
-            CountDownLatch latch = new CountDownLatch(1000);
+            CountDownLatch latch = new CountDownLatch(count);
 
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < count; i++) {
                 es.submit(() -> {
                     try {
                         Thread.sleep(1000);
@@ -59,7 +60,8 @@ public abstract class VirtualThreads {
             latch.await();
 
             long end = System.currentTimeMillis();
-            System.out.println("workIOBoundMockThread time: " + (end - start));
+            System.out.println("workIOBoundMockVThread time: " + (end - start)+"ms");
+            System.out.println("VThread Count: " + count);
         }
     }
 }

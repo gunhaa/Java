@@ -11,10 +11,16 @@ public class Main {
         // CPU BOUND 연산에서 vthread와 kthread의 차이는 크지 않다
         // vthread의 장점은 IO bound에서 나온다
 
-        // workIOBoundMockThread time: 10023
-//        Threads.workIOBoundMockThread();
+        //workIOBoundMockThread time: 2427ms
+        //Thread Count: 10000
+        //workIOBoundMockThread time: 6063ms
+        //Thread Count: 20000
+        Threads.workIOBoundMockThread();
 
-        //workIOBoundMockThread time: 1033
-        VirtualThreads.workIOBoundMockVThread();
+        //workIOBoundMockVThread time: 1940ms
+        //VThread Count: 10000
+//        workIOBoundMockThread time: 5808ms
+//        Thread Count: 20000
+//        VirtualThreads.workIOBoundMockVThread();
     }
 }
