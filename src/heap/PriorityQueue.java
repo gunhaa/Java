@@ -1,6 +1,6 @@
 package heap;
 
-public interface PriorityQueue {
+public interface PriorityQueue<E> {
     /*
     큐와 비슷하지만, 우선순위가 높은 것부터 나온다
     주요 메서드:  insert(우선 순위 삽입, 정보 필요)
@@ -12,4 +12,6 @@ public interface PriorityQueue {
     Priority Queue를 구현하는 방식 중, 가장 성능이 좋은 방식이 heap이기 때문에 Priority Queue = Heap이라고 생각을 하는 것이다
     프로세스 스케쥴링에서 주로 사용된다
     */
+    void insert(E e);
+    E delete();
 }
